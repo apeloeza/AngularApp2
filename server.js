@@ -17,7 +17,7 @@ process.env.NODE_ENV == 'production' && app.use(requireHTTPS)
 app.use(express.static(rootDir));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: rootDir})
+    res.sendFile('index.html', {root: rootDir}),
 );
 
 const port = process.env.PORT || 8080
