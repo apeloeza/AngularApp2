@@ -1,7 +1,7 @@
 function requireHTTPS(req, res, next) {
     // The 'x-forward-photo' check is for Heroku
     if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
-        return res.redirect('https:/' + req.get('host') +req.url);
+        return res.redirect('https://' + req.get('host') +req.url);
     }
     next();
 }
@@ -17,7 +17,7 @@ process.env.NODE_ENV == 'production' && app.use(requireHTTPS)
 app.use(express.static(rootDir));
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: rootDir}),
+    res.sendFile('index.html', {root: rootDir})
 );
 
 const port = process.env.PORT || 8080
